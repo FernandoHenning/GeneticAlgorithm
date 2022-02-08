@@ -8,7 +8,7 @@ import numpy as np
 from numpy import ma
 import matplotlib.pyplot as plt
 from tkinter import messagebox
-from matplotlib import ticker, cm
+
 # root window
 root = tk.Tk()
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
@@ -31,7 +31,7 @@ max_x_label = ttk.Label(root, text="Valor máximo para X:", background='#fff', f
 max_x_label.grid(column=0, row=1, sticky=tk.W, padx=5, pady=5)
 
 max_x_entry = ttk.Entry(root)
-max_x_entry.insert(0,"20")
+max_x_entry.insert(0, "20")
 max_x_entry.grid(column=0, row=1, sticky=tk.E, padx=5, pady=5)
 
 # MÍNIMO X---------------------------------------------------------
@@ -40,7 +40,7 @@ min_x_label = ttk.Label(root, text="Valor mínimo para X:", background='#fff', f
 min_x_label.grid(column=0, row=2, sticky=tk.W, padx=5, pady=5)
 
 min_x_entry = ttk.Entry(root)
-min_x_entry.insert(0,"0")
+min_x_entry.insert(0, "0")
 min_x_entry.grid(column=0, row=2, sticky=tk.E, padx=5, pady=5)
 
 ttk.Separator(root, orient=tk.HORIZONTAL).grid(column=0, row=3, sticky="ew")
@@ -51,7 +51,7 @@ max_y_label = ttk.Label(root, text="Valor máximo para Y:", background='#fff', f
 max_y_label.grid(column=0, row=4, sticky=tk.W, padx=5, pady=5)
 
 max_y_entry = ttk.Entry(root)
-max_y_entry.insert(0,"20")
+max_y_entry.insert(0, "20")
 max_y_entry.grid(column=0, row=4, sticky=tk.E, padx=5, pady=5)
 
 # MÁXIMO Y --------------------------------------------------------
@@ -60,7 +60,7 @@ min_y_label = ttk.Label(root, text="Valor mínimo para Y:", background='#fff', f
 min_y_label.grid(column=0, row=5, sticky=tk.W, padx=5, pady=5)
 
 min_y_entry = ttk.Entry(root)
-min_y_entry.insert(0,"10")
+min_y_entry.insert(0, "10")
 min_y_entry.grid(column=0, row=5, sticky=tk.E, padx=5, pady=5)
 
 ttk.Separator(root, orient=tk.HORIZONTAL).grid(column=0, row=6, sticky="ew")
@@ -71,7 +71,7 @@ resolution_x_label = ttk.Label(root, text="Resolución para X:", background='#ff
 resolution_x_label.grid(column=0, row=7, sticky=tk.W, padx=5, pady=5)
 
 resolution_x_entry = ttk.Entry(root)
-resolution_x_entry.insert(0,"0.01")
+resolution_x_entry.insert(0, "0.01")
 resolution_x_entry.grid(column=0, row=7, sticky=tk.E, padx=5, pady=5)
 
 # RESOLUTION Y --------------------------------------------------------
@@ -80,7 +80,7 @@ resolution_y_label = ttk.Label(root, text="Resolución para Y:", background='#ff
 resolution_y_label.grid(column=0, row=8, sticky=tk.W, padx=5, pady=5)
 
 resolution_y_entry = ttk.Entry(root)
-resolution_y_entry.insert(0,"0.01")
+resolution_y_entry.insert(0, "0.01")
 resolution_y_entry.grid(column=0, row=8, sticky=tk.E, padx=5, pady=5)
 
 ttk.Separator(root, orient=tk.HORIZONTAL).grid(column=0, row=9, sticky="ew")
@@ -90,7 +90,7 @@ max_generations_label = ttk.Label(root, text="Límite de generaciones:", backgro
 max_generations_label.grid(column=0, row=10, sticky=tk.W, padx=5, pady=5)
 
 max_generations_entry = ttk.Entry(root)
-max_generations_entry.insert(0,"1000")
+max_generations_entry.insert(0, "1000")
 max_generations_entry.grid(column=0, row=10, sticky=tk.E, padx=5, pady=5)
 
 # INITIAL POPULATION -----------------------------------------------------
@@ -99,7 +99,7 @@ initial_population_label = ttk.Label(root, text="Población inicial:", backgroun
 initial_population_label.grid(column=0, row=11, sticky=tk.W, padx=5, pady=5)
 
 initial_population_entry = ttk.Entry(root)
-initial_population_entry.insert(0,"8")
+initial_population_entry.insert(0, "8")
 initial_population_entry.grid(column=0, row=11, sticky=tk.E, padx=5, pady=5)
 
 # MAX POPULATION -----------------------------------------------------
@@ -108,7 +108,7 @@ max_population_label = ttk.Label(root, text="Población máxima:", background='#
 max_population_label.grid(column=0, row=12, sticky=tk.W, padx=5, pady=5)
 
 max_population_entry = ttk.Entry(root)
-max_population_entry.insert(0,"100")
+max_population_entry.insert(0, "100")
 max_population_entry.grid(column=0, row=12, sticky=tk.E, padx=5, pady=5)
 
 # INDIVIDUAL MUTATION PROB -----------------------------------------------------
@@ -118,7 +118,7 @@ individual_mutation_prob_label = ttk.Label(root, text="Probabilidad de motación
 individual_mutation_prob_label.grid(column=0, row=13, sticky=tk.W, padx=5, pady=5)
 
 individual_mutation_prob_entry = ttk.Entry(root)
-individual_mutation_prob_entry.insert(0,"0.25")
+individual_mutation_prob_entry.insert(0, "0.25")
 individual_mutation_prob_entry.grid(column=0, row=13, sticky=tk.E, padx=5, pady=5)
 
 # GENE MUTATION PROB -----------------------------------------------------
@@ -128,13 +128,13 @@ gen_mutation_prob_label = ttk.Label(root, text="Probabilidad de motación de gen
 gen_mutation_prob_label.grid(column=0, row=14, sticky=tk.W, padx=5, pady=5)
 
 gen_mutation_prob_entry = ttk.Entry(root)
-gen_mutation_prob_entry.insert(0,"0.15")
+gen_mutation_prob_entry.insert(0, "0.15")
 gen_mutation_prob_entry.grid(column=0, row=14, sticky=tk.E, padx=5, pady=5)
 
 
 # BUTTONS ---------------------------------------------------------
 def run(minimize: bool):
-    if int((min_x_entry.get())) >= 0 and int(max_x_entry.get())>= 0:
+    if int((min_x_entry.get())) >= 0 and int(max_x_entry.get()) >= 0:
         ga = GeneticAlgorithm(float(resolution_x_entry.get()), float(resolution_y_entry.get()),
                               (float(min_x_entry.get()), float(max_x_entry.get())),
                               (float(min_y_entry.get()), float(max_y_entry.get())),
@@ -175,12 +175,13 @@ def run(minimize: bool):
         linear = FigureCanvasTkAgg(figure2, root)
         linear.get_tk_widget().grid(column=2, row=0, rowspan=13, sticky=tk.W, padx=5, pady=5)
 
+
         figure3 = plt.figure()
         x = np.linspace(ga.interval_x[0], ga.interval_x[1])
         y = np.linspace(ga.interval_y[0], ga.interval_y[1])
         X, Y = np.meshgrid(x, y)
 
-        Z1 = ga.f(X,Y)
+        Z1 = ga.f(X, Y)
         z = 50 * Z1
         z[:5, :5] = -1
         z = ma.masked_where(z <= 0, z)
@@ -189,7 +190,7 @@ def run(minimize: bool):
         cbar = plt.colorbar(cp)
         plt.title(f'Primer generación - tamaño de la población: {len(ga.first_generation)}')
         for individual in ga.first_generation:
-            plt.scatter(individual[4], individual[5],marker='o',c='r',s=50)
+            plt.scatter(individual[4], individual[5], marker='o', c='r', s=50)
         plt.xlabel('X')
         plt.ylabel('Y')
         first_generation = FigureCanvasTkAgg(figure3, root)
@@ -206,7 +207,6 @@ def run(minimize: bool):
         z = ma.masked_where(z <= 0, z)
 
         cp = plt.contourf(X, Y, z)
-        cbar = plt.colorbar(cp)
         plt.title(f'Última generación - tamaño de la población: {len(ga.population)}')
         for individual in ga.population:
             plt.scatter(individual[4], individual[5],marker='o',c='r',s=50)
@@ -217,8 +217,10 @@ def run(minimize: bool):
         messagebox.showinfo(
             message=f"Genotipo X: {ga.population[0][0]}\nGenotipo Y:{ga.population[0][1]}\ni:{ga.population[0][2]}, j: {ga.population[0][3]}, Fenotipo i: {ga.population[0][4]}, Fenotipo j: {ga.population[0][5]}, Aptitud: {ga.population[0][6]}",
             title="Mejor individuo")
+        plt.show()
     else:
         messagebox.showerror(title="Valores fuera del dominio de la función", message=f"El valor {min_x_entry.get()} o {max_x_entry.get()} se encuentra fuera del dominio de la función.")
+
 
 login_button = ttk.Button(root, text="Maximizar", command=lambda: run(True))
 login_button.grid(column=0, row=15, sticky=tk.W, padx=5, pady=5)
